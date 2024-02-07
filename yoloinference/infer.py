@@ -30,12 +30,11 @@ net = cv2.dnn.readNetFromDarknet(configPath, weightsPath)
 net.setPreferableBackend(cv2.dnn.DNN_BACKEND_CUDA)
 net.setPreferableTarget(cv2.dnn.DNN_TARGET_CUDA)
 id_general = 1000
-print(direct_in)
+
+valid_extensions = (".jpg", ".jpeg", ".png", ".tiff", ".tif")
 for imagen in os.listdir(direct_in):
-    
     if not (imagen.endswith(".jpg") or imagen.endswith(".JPG") or imagen.endswith(".png") or imagen.endswith(".PNG") or imagen.endswith(".jpeg") or imagen.endswith(".tiff") or imagen.endswith(".tif")):
         continue
-    print(imagen)
     # load our input image and grab its spatial dimensions
     image = cv2.imread(os.path.join(direct_in, imagen))
     image_orig = image
